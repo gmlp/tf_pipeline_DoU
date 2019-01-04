@@ -11,8 +11,9 @@ currentBuild.displayName = new SimpleDateFormat("yy.MM.dd").format(new Date()) +
         }
     }
     environment {
-        AWS_ACCESS_KEY_ID = credentials('aws_access_key')
-        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_key')
+        AWS_ACCESS = credentials('aws_credentials')
+        AWS_ACCESS_KEY_ID = "${env.AWS_ACCESS_USR}"
+        AWS_SECRET_ACCESS_KEY = "${env.AWS_ACCESS_PSW}"
         TF_VAR_my_public_key_path = credentials('ssh-public-key')
         TF_VAR_my_private_key_path = credentials('ssh-private-key')
         TOKEN = credentials('gh-token')
